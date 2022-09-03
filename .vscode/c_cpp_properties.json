@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+								"/usr/include/X11/**",
+								"/usr/lib/X11/**",
+								"/usr/include/freetype2/**"
+            ],
+            "defines": [],
+            "compilerPath": "/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
