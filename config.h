@@ -27,11 +27,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	/* class      instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+	// { "Gimp",     NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Chromium", NULL,     NULL,           0,         1,          0,          -1,        -1 },
+	{ "St",       NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ NULL,       NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	{ "mpv",      NULL,     NULL,           0,         0,          1,          -1,        -1 }
 };
 
 /* layout(s) */
@@ -76,7 +77,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const Key keys[] = {
 	/* modifier                     key               function           argument */
 	{ MODKEY,                       XK_p,             spawn,             {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return,        spawn,             {.v = termcmd } },
+	{ MODKEY,                       XK_Return,        spawn,             {.v = termcmd } },
 	{ MODKEY,                       XK_b,             togglebar,         {0} },
 	STACKKEYS(MODKEY,                                 focus)
 	STACKKEYS(MODKEY|ShiftMask,                       push)
@@ -86,7 +87,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_l,             setmfact,          {.f = +0.05} },
 	{ MODKEY,                       XK_Return,        zoom,              {0} },
 	{ MODKEY,                       XK_Tab,           view,              {0} },
-	{ MODKEY|ShiftMask,             XK_c,             killclient,        {0} },
+	{ MODKEY,                       XK_BackSpace,     killclient,        {0} },
 	// { MODKEY,                       XK_t,             setlayout,         {.v = &layouts[0]} },
 	// { MODKEY,                       XK_f,             setlayout,         {.v = &layouts[1]} },
 	// { MODKEY,                       XK_m,             setlayout,         {.v = &layouts[2]} },
