@@ -27,12 +27,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	// { "Gimp",     NULL,     NULL,           0,         1,          0,           0,        -1 },
-	// { "Chromium", NULL,     NULL,           0,         1,          0,          -1,        -1 },
-	{ "St",       NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,       NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
-	{ NULL,       NULL,     "mpv",          0,         0,          1,           0,        -1 }
+	/* class      instance  title                    tags mask  isfloating  isterminal  noswallow  monitor */
+	// { "Gimp",     NULL,     NULL,                    0,         1,          0,           0,        -1 },
+	// { "Chromium", NULL,     NULL,                    0,         1,          0,          -1,        -1 },
+	{ "st",       NULL,     NULL,                    0,         0,          1,           0,        -1 },
+	{ NULL,       NULL,     "Event Tester",          0,         0,          0,           1,        -1 }, /* xev */
+	{ NULL,       NULL,     "Picture in picture",    0,         1,          0,           0,        -1 },
+	{ NULL,       NULL,     "DevTools",              0,         1,          0,           0,        -1 },
+	{ "feh",      NULL,     NULL,                    0,         0,          0,           0,        -1 },
+	{ "mpv",      NULL,     NULL,                    0,         0,          0,           0,        -1 },
 };
 
 /* layout(s) */
@@ -71,6 +74,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *slockcmd[] = { "slock", NULL };
 
 #include "shiftview.c"
 
@@ -78,6 +82,7 @@ static const Key keys[] = {
 	/* modifier                     key               function           argument */
 	{ MODKEY,                       XK_p,             spawn,             {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,        spawn,             {.v = termcmd } },
+	{ 0,                            XK_Scroll_Lock,   spawn,             {.v = slockcmd } },
 	{ MODKEY,                       XK_b,             togglebar,         {0} },
 	STACKKEYS(MODKEY,                                 focus)
 	STACKKEYS(MODKEY|ShiftMask,                       push)
