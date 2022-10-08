@@ -46,8 +46,6 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
 };
 
 /* key definitions */
@@ -91,7 +89,6 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return,        zoom,              {0} },
 	{ MODKEY,                       XK_Tab,           view,              {0} },
 	{ MODKEY,                       XK_BackSpace,     killclient,        {0} },
-	{ MODKEY|ShiftMask,             XK_f,             setlayout,         {0} },
 	{ MODKEY,                       XK_f,             togglefloating,    {0} },
 	{ MODKEY,                       XK_t,             togglealwaysontop, {0} },
 	{ MODKEY,                       XK_0,             view,              {.ui = ~0 } },
@@ -118,8 +115,6 @@ static const Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
