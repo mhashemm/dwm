@@ -106,6 +106,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Escape,        quit,              {0} },
 	{ MODKEY,			                  XK_bracketleft,		shiftview,	       { .i = -1 } },
 	{ MODKEY,			                  XK_bracketright,	shiftview,	       { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_bracketright,  shifttag,          { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_bracketleft,   shifttag,          { .i = -1 } },
 };
 
 /* button definitions */

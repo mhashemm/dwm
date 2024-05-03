@@ -17,3 +17,22 @@ shiftview(const Arg *arg) {
 
 	view(&shifted);
 }
+
+void
+shifttag(const Arg *arg){
+	Arg shifted;
+
+	if(arg->i > 0) // left circular shift
+		shifted.ui = (selmon->tagset[selmon->seltags] << arg->i)
+		   | (selmon->tagset[selmon->seltags] >> (LENGTH(tags) - arg->i));
+
+	else // right circular shift
+		shifted.ui = selmon->tagset[selmon->seltags] >> (- arg->i)
+		   | selmon->tagset[selmon->seltags] << (LENGTH(tags) + arg->i);
+
+	selmon->sel->tags = shifted.ui;
+
+	focus(NULL);
+	arrange(selmon);
+	view(&shifted);
+}
